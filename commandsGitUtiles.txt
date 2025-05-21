@@ -5,7 +5,4 @@ git switch develop
 git status
 git add ./*
 git clone git@github.com:imUrsus/SAE203-StickOS.git
-<<<<<<< HEAD
-=======
 git pull git@github.com:imUrsus/SAE203-StickOS.git
->>>>>>> b217b50 (Ajout d'une cheat sheet git temporaire)
