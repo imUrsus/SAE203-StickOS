@@ -1,0 +1,7 @@
+git push git@github.com:imUrsus/SAE203-StickOS.git develop
+git config --list
+git commit -m 'Ajout du repertoire de l'intranet'
+git switch develop
+git status
+git add ./*
+git clone git@github.com:imUrsus/SAE203-StickOS.git
