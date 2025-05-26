@@ -6,3 +6,4 @@ git status
 git add ./*
 git clone git@github.com:imUrsus/SAE203-StickOS.git
 git pull git@github.com:imUrsus/SAE203-StickOS.git
+git fetch git@github.com:imUrsus/SAE203-StickOS.git develop
