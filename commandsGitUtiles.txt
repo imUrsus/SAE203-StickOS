@@ -1,4 +1,6 @@
 # Les commandes à entrer dans l'ordre pour push sur le github
+## Tu te places dans le branche develop
+
 ## Tu récupères les mises à jours
 git fetch git@github.com:imUrsus/SAE203-StickOS.git develop
 
