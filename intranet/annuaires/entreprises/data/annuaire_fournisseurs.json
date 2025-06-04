@@ -1,0 +1,27 @@
+[
+  {
+    "Nom": "Renault",
+    "Description": "Renault est un constructeur automobile français. L'entreprise produit une gamme de voitures et de véhicules utilitaires.",
+    "Logo": ""
+  },
+  {
+    "Nom": "TotalEnergies",
+    "Description": "TotalEnergies est une compagnie pétrolière et gazière française et l'une des sept 'supermajors' du secteur.",
+    "Logo": ""
+  },
+  {
+    "Nom": "L'Oréal",
+    "Description": "L'Oréal est une entreprise française de produits cosmétiques et de beauté, la plus grande entreprise de ce secteur dans le monde.",
+    "Logo": ""
+  },
+  {
+    "Nom": "Airbus",
+    "Description": "Airbus est un constructeur aéronautique européen, spécialisé dans la fabrication d'avions civils et militaires.",
+    "Logo": ""
+  },
+  {
+    "Nom": "Sanofi",
+    "Description": "Sanofi est une entreprise pharmaceutique française, l'une des plus grandes au monde dans ce secteur.",
+    "Logo": ""
+  }
+]
