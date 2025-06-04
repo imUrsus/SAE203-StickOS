@@ -1,15 +1,36 @@
-git push git@github.com:imUrsus/SAE203-StickOS.git develop
-git config --list
-git commit -m 'Ajout du repertoire de l'intranet'
-git switch develop
-git status
-git add ./*
-git clone git@github.com:imUrsus/SAE203-StickOS.git
-git pull git@github.com:imUrsus/SAE203-StickOS.git
+# Les commandes à entrer dans l'ordre pour push sur le github
+## Tu récupères les mises à jours
 git fetch git@github.com:imUrsus/SAE203-StickOS.git develop
 
-git pull origin develop
+## Tu met à jour ton dépôt local
+git pull --rebase origin develop
+
+## Tu ajoutes tes fichiers modifier en staging
+git add ./* (commande à rentrer à la racine)
+
+## Tu commit avec un messsage personnalisé (un message sérieux car il peut être vu par tout le monde)
+git commit -m 'Ajout du repertoire de l'intranet'
+
+## Tu push tes modifications sur le GitHub
 git push origin develop
 
+# Lister la configuration de votre GIT (pour voir l'email avec lequel vous faites vos push par exemple)
+git config --list
+
+
+git switch develop
+git status
+
+# Modifications sur les fichiers
+git add ./*
+git commit -m 'Ajout du repertoire de l'intranet'
+
+git clone git@github.com:imUrsus/SAE203-StickOS.git
+git fetch git@github.com:imUrsus/SAE203-StickOS.git develop
+
+git pull git@github.com:imUrsus/SAE203-StickOS.git
+git pull origin develop
 git pull --rebase origin develop
+
+git push git@github.com:imUrsus/SAE203-StickOS.git develop
 git push origin develop
