@@ -1,0 +1,6 @@
+[Lastname] => testNom
+[Firstname] => testPrenom
+[Label] => patron
+[Photo] => ./images/patron.jpg
+[Bio] => Ceci est la biographie d'un patron d'entreprise du CAC40
+[Role] => admin OU salariés OU managers OU direction ET perso
