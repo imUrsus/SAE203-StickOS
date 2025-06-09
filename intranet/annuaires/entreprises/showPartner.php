@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier les partenaires</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
-</head>
+
+<?php 
+require_once '../../scripts/fonctions.php';
+parametres("Partner");
+entete();
+navigation("Partner", )?>
 <body>
 
         <tbody>
@@ -94,7 +94,9 @@
     </tbody>
 </table>
 
-            <?php }?>
+            <?php }
+            
+            pieddepage()?>
 
 </body>
 </html>
