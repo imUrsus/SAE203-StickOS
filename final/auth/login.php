@@ -14,9 +14,9 @@ $utilisateur = json_decode($jsonData, true);
 echo"<pre>";
 foreach($utilisateur as $user){
     if ($user["username"] == $name){
-        if (password_verify($password, $user["motdepasse"])){
+        if (password_verify($password, $user["password"])){
             $isUserFind = true;
-            $_SESSION["pseudo"] = $user["utilisateur"];
+            $_SESSION["username"] = $user["utilisateur"];
             $_SESSION["mail"] = $user["email"];
             $_SESSION["role"] = $user["role"];
             $_SESSION["vehicule"] = $user["vehicule"];
