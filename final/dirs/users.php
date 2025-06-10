@@ -32,11 +32,11 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>Nom</th>
+                        <th>Nom d'utilisateur</th>
+                        <th>Email</th>
                         <th>Prénom</th>
-                        <th>Fonction</th>
-                        <th>Photo</th>
-                        <th>Biographie</th>
+                        <th>Nom</th>
+                        <th>Poste</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,20 +45,28 @@
                         ?>
                         <tr>
 
+<<<<<<< HEAD
                         <form action="action.php" method="POST">
+=======
+                        <form action="../includes/users/action.php" method="POST">
+                            <input name="id" type="text" value="<?php echo $entreprise["id"] ?>" hidden></input>
 
-                        <?php
-                        foreach ($entreprise as $key => $value) {
-                            if ($key != "Id") {
-                            ?>
-                            <td><?php echo $value ?></td>
-                            <?php
-                            }
-                            ?>
-                            <input name="<?php echo $key ?>" type="text" value="<?php echo $value ?>" hidden></input>
-                            <?php
-                        }   
-                        ?>
+                            <td><?php echo $entreprise["username"] ?></td>
+                            <input name="username" type="text" value="<?php echo $entreprise["username"] ?>" hidden></input>
+
+                            <td><?php echo $entreprise["email"] ?></td>
+                            <input name="email" type="text" value="<?php echo $entreprise["email"] ?>" hidden></input>
+
+                            <td><?php echo $entreprise["first_name"] ?></td>
+                            <input name="first_name" type="text" value="<?php echo $entreprise["first_name"] ?>" hidden></input>
+
+                            <td><?php echo $entreprise["last_name"] ?></td>
+                            <input name="last_name" type="text" value="<?php echo $entreprise["last_name"] ?>" hidden></input>
+
+                            <td><?php echo $entreprise["role"] ?></td>
+                            <input name="role" type="text" value="<?php echo $entreprise["role"] ?>" hidden></input>
+>>>>>>> 5aa363e (Modification des fichiers de configuration des users)
+
                             <td>
                                 <button class="btn btn-warning" type="submit" name="modify">Modifier</button>
                             </td>

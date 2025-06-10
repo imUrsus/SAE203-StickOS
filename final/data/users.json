@@ -6,8 +6,14 @@
     "email": "admin@example.com",
     "first_name": "Admin",
     "last_name": "User",
+<<<<<<< HEAD
     "role": "admin",
     "image_path": "img_profil/admin.jpg"
+=======
+    "groups": ["admin"],
+    "is_active": true,
+    "role": "admin"
+>>>>>>> 5aa363e (Modification des fichiers de configuration des users)
   },
   {
     "id": 2,
@@ -15,9 +21,16 @@
     "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
     "email": "michel@example.com",
     "first_name": "Michel",
+<<<<<<< HEAD
     "last_name": "User",
     "role": "user",
     "image_path": "img_profil/michel.jpg"
+=======
+    "last_name": "User", 
+    "groups": ["salaries"],
+    "is_active": true,
+    "role": "user"
+>>>>>>> 5aa363e (Modification des fichiers de configuration des users)
   },
   {
     "id": 3,
@@ -26,8 +39,14 @@
     "email": "manager@example.com",
     "first_name": "Manager",
     "last_name": "User",
+<<<<<<< HEAD
     "role": "manager",
     "image_path": "img_profil/manager.jpg"
+=======
+    "groups": ["managers", "salaries"],
+    "is_active": true,
+    "role": "manager"
+>>>>>>> 5aa363e (Modification des fichiers de configuration des users)
   },
   {
     "id": 4,
@@ -36,8 +55,14 @@
     "email": "direction@example.com",
     "first_name": "Direction",
     "last_name": "User",
+<<<<<<< HEAD
     "role": "direction",
     "image_path": "img_profil/direction.jpg"
+=======
+    "groups": ["direction", "managers"],
+    "is_active": true,
+    "role": "direction"
+>>>>>>> 5aa363e (Modification des fichiers de configuration des users)
   },
   {
     "id": 5,
@@ -46,7 +71,15 @@
     "email": "admin@example.com",
     "first_name": "Admin",
     "last_name": "User",
+<<<<<<< HEAD
     "role": "admin",
     "image_path": "img_profil/admin2.jpg"
   }
 ]
+=======
+    "groups": ["admin"],
+    "is_active": true,
+    "role": "admin"
+  }
+]
+>>>>>>> 5aa363e (Modification des fichiers de configuration des users)
