@@ -43,16 +43,9 @@ function head() {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">Utilisateurs</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="includes/users/action.php">Gestion des utilisateurs</a></li>
-                            <li><a class="dropdown-item" href="includes/users/modifyUser.php">Modifier un utilisateur</a></li>
-                            <li><a class="dropdown-item" href="includes/users/deleteUser.php">Supprimer un utilisateur</a></li>
-                        </ul>
-                    </li>
-                    <!-- Dropdown Groupes -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="groupDropdown" role="button" data-bs-toggle="dropdown">Groupes</a>
-                        <ul class="dropdown-menu">
-                            <!-- <li><a class="dropdown-item" href="group_management.php">Gestion des groupes</a></li>-->
+                            <li><a class="dropdown-item" href="../includes/users/action.php">Gestion des utilisateurs</a></li>
+                            <li><a class="dropdown-item" href="../includes/users/modifyUser.php">Modifier un utilisateur</a></li>
+                            <li><a class="dropdown-item" href="../includes/users/deleteUser.php">Supprimer un utilisateur</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -64,37 +57,20 @@ function head() {
                     </li>
 
                     <li class="nav-item"><a class="nav-link" href="wiki.php">Wiki</a></li>
-                    <!--<li class="nav-item"><a class="nav-link" href="data_export.php">Export</a></li>-->
-                    <!--<li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>-->
 
                 <?php elseif ($role === 'managers'): ?>
                     <li class="nav-item"><a class="nav-link" href="../dirs/clients.php">Clients</a></li>
                     <li class="nav-item"><a class="nav-link" href="../dirs/providers.php">Fournisseurs</a></li>
-                     <!--<li class="nav-item"><a class="nav-link" href="projets.php">Projets</a></li>
-                    <li class="nav-item"><a class="nav-link" href="messages.php">Messages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="planning.php">Planning</a></li>
-                    <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
-                    <li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>-->
 
                 <?php elseif ($role === 'direction'): ?>
                     <li class="nav-item"><a class="nav-link" href="../dirs/clients.php">Clients</a></li>
                     <li class="nav-item"><a class="nav-link" href="../dirs/providers.php">Fournisseurs</a></li>
-                     <!--<li class="nav-item"><a class="nav-link" href="messages.php">Messages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="planning.php">Planning</a></li>
-                    <li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
-                    <li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>-->
+
 
                 <?php elseif ($role === 'salariés'): ?>
-                     <!--<li class="nav-item"><a class="nav-link" href="documents.php">Documents</a></li>
-                    <li class="nav-item"><a class="nav-link" href="messages.php">Messages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="planning.php">Planning</a></li>
-                    <li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>-->
 
                 <?php else: ?>
                     <!-- perso -->
-                     <!--<li class="nav-item"><a class="nav-link" href="messages.php">Messages</a></li>
-                    <li class="nav-item"><a class="nav-link" href="planning.php">Planning</a></li>
-                    <li class="nav-item"><a class="nav-link" href="support.php">Support</a></li>-->
                 <?php endif; ?>
             </ul>
             <div class="dropdown ms-auto">
