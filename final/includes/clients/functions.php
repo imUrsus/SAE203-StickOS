@@ -1,5 +1,5 @@
 <?php
-define('CLIENTS_FILE', __DIR__ . '../../../data/clients.json');
+define('CLIENTS_FILE', __DIR__ . './../../data/clients.json');
 // Charger tous les clients
 function getAllClients() {
     if (!file_exists(CLIENTS_FILE)) {
