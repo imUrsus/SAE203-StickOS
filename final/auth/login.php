@@ -23,7 +23,7 @@ foreach($utilisateur as $user){
             $_SESSION["Photo"] = $user["Photo"];
             $_SESSION["Bio"] = $user["bio"];
 
-            header("Location:../dashboard.php");
+            header("Location:../wiki.php");
         }
         else{
             echo "<script type='text/javascript'>
