@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once '../auth/login.php';
-Auth::requireLogin();
+require_once 'auth/login.php';
+//Auth::requireLogin();
 $user = $_SESSION['user'];
 ?>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@ $user = $_SESSION['user'];
   <title>Intranet StickOS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
+<style>
     body { background: linear-gradient(#4FFDBE, #188FA7); }
     .navbar { background-color: white; }
     .navbar-brand { color: white !important; }
@@ -19,9 +19,9 @@ $user = $_SESSION['user'];
     .dropdown-item { color: black !important; }
     .badge-role { background-color: #4FFDBE; color: black; }
     .card-header { background-color: #e9ecef; }
-    footer { background-color: white; }
+    .footer { background-color: white; }
     .custom-btn {
-      background-color:#1da5c0;
+      background-color: #1da5c0;
       color: white;
       border-color: #1da5c0;
     }
@@ -42,8 +42,8 @@ $user = $_SESSION['user'];
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><span class="dropdown-item disabled"><?= htmlspecialchars($user['first_name']) ?></span></li>
-          <li><a class="dropdown-item" href="profil.php">Mon profil</a></li>
-          <li><a class="dropdown-item text-danger" href="logout.php">Se déconnecter</a></li>
+          <li><a class="dropdown-item" href="profile.php">Mon profil</a></li>
+          <li><a class="dropdown-item text-danger" href="auth/logout.php">Se déconnecter</a></li>
         </ul>
       </div>
     </div>
