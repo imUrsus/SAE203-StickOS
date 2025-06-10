@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-auto">
-                    <img src="logo.png" alt="Logo" class="img-fluid" width="200" height="200">
+                    <img src="../assets/img/logo.png" alt="Logo StickOS" class="img-fluid" width="200" height="200">
                 </div>
             </div>
         </div>

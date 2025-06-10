@@ -33,7 +33,7 @@ $user = $_SESSION['user'];
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="dashboard.php">
-      <img src="logo.png" alt="Logo" class="img-fluid" width="150" height="150">
+      <img src="/assets/img/logo.png" alt="Logo StickOS" class="img-fluid" width="150" height="150">
     </a>
     <div class="ms-auto">
       <div class="dropdown">
