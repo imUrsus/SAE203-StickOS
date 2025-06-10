@@ -2,15 +2,15 @@
 <html lang="fr">
 
 <?php 
-require_once '../../scripts/fonctions.php';
+/*require_once '../includes/template.php';
 parametres("Partner");
 entete();
-navigation("Partner", )?>
+navigation("Partner", )*/?>
 <body>
 
         <tbody>
             <?php
-            $jsonFile = 'data/annuaire_fournisseurs.json';
+            $jsonFile = '../data/providers.json';
             $jsonData = file_get_contents($jsonFile);
             $utilisateurs = json_decode($jsonData, true);
             session_start();
@@ -36,7 +36,7 @@ navigation("Partner", )?>
                         $utilisateurs[$index]['Description'] = $description;
     
                         if (isset($_FILES['Logo']) && $_FILES['Logo']['error'] === UPLOAD_ERR_OK) {
-                            $uploadDir = 'partnerLogo/';
+                            $uploadDir = '../assets/Providers/';
                             $uploadFile = $uploadDir . basename($_FILES['Logo']['name']);
     
                             if (move_uploaded_file($_FILES['Logo']['tmp_name'], $uploadFile)) {

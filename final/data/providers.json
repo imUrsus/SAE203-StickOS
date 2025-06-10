@@ -2,12 +2,12 @@
     {
         "Nom": "Renault2",
         "Description": "Renault est un constructeur automobile fran\u00e7ais. L'entreprise produit une gamme de voitures et de v\u00e9hicules utilitaires.",
-        "Logo": "partnerLogo\/renault"
+        "Logo": "..\/assets\/Providers\/renault"
     },
     {
         "Nom": "TotalEnergies",
         "Description": "TotalEnergies est une compagnie p\u00e9troli\u00e8re et gazi\u00e8re fran\u00e7aise et l'une des sept 'supermajors' du secteur.",
-        "Logo": "partnerLogo\/cadis.png"
+        "Logo": "..\/assets\/Providers\/cadis.png"
     },
     {
         "Nom": "L'Or\u00e9al",
