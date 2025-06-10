@@ -16,7 +16,7 @@
         <div class="container-fluid mx-2 my-4">
             <h1>Annuaire de l'entreprise</h1>
             <?php
-            if (($_SESSION["role"] == "admin") || ($_SESSION["role"] == "manager")) {
+            if (($_SESSION["role"] != "admin") || ($_SESSION["role"] == "manager")) {
                 if (isset($_GET["message"])) {
                     echo "<p class='fs-4'>".$_GET["message"]."</p>";
                 }
@@ -42,31 +42,6 @@
                     foreach (array_reverse($data) as $i => $entreprise) {
                         ?>
                         <tr>
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <form action="action.php" method="POST">
-=======
-                        <form action="../includes/users/action.php" method="POST">
-                            <input name="id" type="text" value="<?php echo $entreprise["id"] ?>" hidden></input>
-
-                            <td><?php echo $entreprise["username"] ?></td>
-                            <input name="username" type="text" value="<?php echo $entreprise["username"] ?>" hidden></input>
-
-                            <td><?php echo $entreprise["email"] ?></td>
-                            <input name="email" type="text" value="<?php echo $entreprise["email"] ?>" hidden></input>
-
-                            <td><?php echo $entreprise["first_name"] ?></td>
-                            <input name="first_name" type="text" value="<?php echo $entreprise["first_name"] ?>" hidden></input>
-
-                            <td><?php echo $entreprise["last_name"] ?></td>
-                            <input name="last_name" type="text" value="<?php echo $entreprise["last_name"] ?>" hidden></input>
-
-                            <td><?php echo $entreprise["role"] ?></td>
-                            <input name="role" type="text" value="<?php echo $entreprise["role"] ?>" hidden></input>
->>>>>>> 5aa363e (Modification des fichiers de configuration des users)
-
-=======
                         <form action="../includes/users/action.php" method="POST">
                             <input name="id" type="text" value="<?php echo $entreprise["id"] ?>" hidden></input>
 
@@ -85,9 +60,8 @@
                             <td><?php echo $entreprise["role"] ?></td>
                             <input name="role" type="text" value="<?php echo $entreprise["role"] ?>" hidden></input>
                         <?php
-                        if (($_SESSION["role"] == "admin") || ($_SESSION["role"] == "manager")) {
+                        if (($_SESSION["role"] != "admin") || ($_SESSION["role"] == "manager")) {
                         ?>
->>>>>>> 3a4cef9 (Modification de la configuration des utilisateurs)
                             <td>
                                 <button class="btn btn-warning" type="submit" name="modify">Modifier</button>
                             </td>

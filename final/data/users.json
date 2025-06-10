@@ -1,67 +1,3 @@
-<<<<<<< HEAD
-[
-  {
-    "id": 1,
-    "username": "admin",
-    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
-    "email": "admin@example.com",
-    "first_name": "Admin",
-    "last_name": "User",
-    "role": "admin",
-    "groups": ["admin"],
-    "is_active": true,
-    "image_path": "img_profil/admin.jpg"
-  },
-  {
-    "id": 2,
-    "username": "Michel",
-    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
-    "email": "michel@example.com",
-    "first_name": "Michel",
-    "last_name": "User",
-    "role": "user",
-    "groups": ["salaries"],
-    "is_active": true,
-    "image_path": "img_profil/michel.jpg"
-  },
-  {
-    "id": 3,
-    "username": "manager",
-    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
-    "email": "manager@example.com",
-    "first_name": "Manager",
-    "last_name": "User",
-    "role": "manager",
-    "groups": ["managers", "salaries"],
-    "is_active": true,
-    "image_path": "img_profil/manager.jpg"
-  },
-  {
-    "id": 4,
-    "username": "direction",
-    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
-    "email": "direction@example.com",
-    "first_name": "Direction",
-    "last_name": "User",
-    "role": "direction",
-    "groups": ["direction", "managers"],
-    "is_active": true,
-    "image_path": "img_profil/direction.jpg"
-  },
-  {
-    "id": 5,
-    "username": "admin",
-    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
-    "email": "admin@example.com",
-    "first_name": "Admin",
-    "last_name": "User",
-    "role": "admin",
-    "groups": ["admin"],
-    "is_active": true,
-    "image_path": "img_profil/admin2.jpg"
-  }
-]
-=======
 {
     "0": {
         "id": 1,
@@ -70,10 +6,6 @@
         "email": "admin@example.com",
         "first_name": "Admin",
         "last_name": "User",
-        "groups": [
-            "admin"
-        ],
-        "is_active": true,
         "role": "admin"
     },
     "1": {
@@ -83,10 +15,6 @@
         "email": "michel@example.com",
         "first_name": "Michel",
         "last_name": "User",
-        "groups": [
-            "salaries"
-        ],
-        "is_active": true,
         "role": "user"
     },
     "3": {
@@ -96,11 +24,6 @@
         "email": "direction@example.com",
         "first_name": "Direction",
         "last_name": "User",
-        "groups": [
-            "direction",
-            "managers"
-        ],
-        "is_active": true,
         "role": "direction"
     },
     "5": {
@@ -126,4 +49,3 @@
         "bio": "vghkvhg"
     }
 }
->>>>>>> 3a4cef9 (Modification de la configuration des utilisateurs)
