@@ -7,6 +7,8 @@
     "first_name": "Admin",
     "last_name": "User",
     "role": "admin",
+    "groups": ["admin"],
+    "is_active": true,
     "image_path": "img_profil/admin.jpg"
   },
   {
@@ -17,6 +19,8 @@
     "first_name": "Michel",
     "last_name": "User",
     "role": "user",
+    "groups": ["salaries"],
+    "is_active": true,
     "image_path": "img_profil/michel.jpg"
   },
   {
@@ -27,6 +31,8 @@
     "first_name": "Manager",
     "last_name": "User",
     "role": "manager",
+    "groups": ["managers", "salaries"],
+    "is_active": true,
     "image_path": "img_profil/manager.jpg"
   },
   {
@@ -37,6 +43,8 @@
     "first_name": "Direction",
     "last_name": "User",
     "role": "direction",
+    "groups": ["direction", "managers"],
+    "is_active": true,
     "image_path": "img_profil/direction.jpg"
   },
   {
@@ -47,7 +55,8 @@
     "first_name": "Admin",
     "last_name": "User",
     "role": "admin",
+    "groups": ["admin"],
+    "is_active": true,
     "image_path": "img_profil/admin2.jpg"
-    
   }
 ]
