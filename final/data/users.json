@@ -53,5 +53,6 @@
     "groups": ["admin"],
     "is_active": true,
     "role": "admin"
+  
   }
 ]

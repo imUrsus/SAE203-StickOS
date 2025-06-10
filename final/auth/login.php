@@ -13,7 +13,7 @@ $jsonData = file_get_contents($jsonFile);
 $utilisateur = json_decode($jsonData, true);
 echo"<pre>";
 foreach($utilisateur as $user){
-    if ($user["name"] == $name){
+    if ($user["username"] == $name){
         if (password_verify($password, $user["motdepasse"])){
             $isUserFind = true;
             $_SESSION["pseudo"] = $user["utilisateur"];
@@ -21,7 +21,7 @@ foreach($utilisateur as $user){
             $_SESSION["role"] = $user["role"];
             $_SESSION["vehicule"] = $user["vehicule"];
             $_SESSION["avatar"] = $user["avatar"];
-            
+
             header("Location:../dashboard.php");
         }
         else{
