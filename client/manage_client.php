@@ -15,12 +15,17 @@ if ($action === 'edit' && (!$id || !($client = getClientById($id)))) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST['nom']) || empty($_POST['prenom']) || empty($_POST['email'])) {
         $errors[] = "Nom, prénom et email sont obligatoires.";
-    } else {
+    }
+    if (!empty($_POST['tel']) && !preg_match('/^(\d{2} ?){4,5}\d{2}$/', $_POST['tel'])) {
+        $errors[] = "Le numéro de téléphone doit être au format 06 12 34 56 78.";
+    }
+    if (empty($errors)) {
+        $tel_sans_espaces = str_replace(' ', '', $_POST['tel'] ?? '');
         $data = [
             'nom' => $_POST['nom'],
             'prenom' => $_POST['prenom'],
             'email' => $_POST['email'],
-            'tel' => $_POST['tel'] ?? '',
+            'tel' => $tel_sans_espaces,
             'adresse' => $_POST['adresse'] ?? ''
         ];
         if ($action === 'edit') {
@@ -78,7 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="col-md-6">
             <label class="form-label">Téléphone</label>
-            <input type="text" name="tel" class="form-control" value="<?= isset($client['tel']) ? htmlspecialchars($client['tel']) : '' ?>">
+            <input type="tel" name="tel" id="tel" class="form-control" maxlength="14"
+                   value="<?= isset($client['tel']) ? htmlspecialchars(preg_replace('/(\d{2})(?=\d)/', '$1 ', $client['tel'])) : '' ?>"
+                   placeholder="06 12 34 56 78">
         </div>
         <div class="col-12">
             <label class="form-label">Adresse</label>
@@ -94,5 +101,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </form>
 </div>
+<script>
+document.getElementById('tel').addEventListener('input', function (e) {
+    let val = e.target.value.replace(/\D/g, ''); // Supprime tout sauf les chiffres
+    let groups = val.match(/.{1,2}/g); // Regroupe par 2 chiffres
+    if (groups) {
+        e.target.value = groups.join(' ').substr(0, 14); // Format + limite à 14 caractères
+    } else {
+        e.target.value = val;
+    }
+});
+</script>
 </body>
 </html>

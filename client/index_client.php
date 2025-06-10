@@ -41,7 +41,7 @@ $clients = getAllClients();
                     <td><?= htmlspecialchars($client['adresse']) ?></td>
                     <td>
                         <a href="manage_client.php?id=<?= $client['id'] ?>" class="btn btn-sm btn-primary">Modifier</a>
-                        <a href="manage_client.php?id=<?= $client['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ce client ?');">Supprimer</a>
+                        <a href="manage_client.php?action=delete&id=<?= $client['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ce client ?');">Supprimer</a>
                         <a href="download.php?id=<?= $client['id'] ?>" class="btn btn-sm btn-secondary">Fiche</a>
                     </td>
                 </tr>

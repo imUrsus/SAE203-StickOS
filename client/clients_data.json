@@ -1,5 +1,5 @@
 [
-        {
+    {
         "id": 1,
         "nom": "Le Goat",
         "prenom": "Hugo",
@@ -358,14 +358,5 @@
         "tel": "03 29 99 45 79",
         "adresse": "186, rue de Pierre, 55387 Duval-sur-Mer",
         "mot_de_passe": "$2b$12$E.aP6GQrG9lCpScSSBGrwu5m7K3eomGBqp8ck05eqSIdiIlJqyf0i"
-    },
-    {
-        "nom": "Akay",
-        "prenom": "numverone",
-        "email": "akaynuver@route.com",
-        "tel": "08 90 90 87 09",
-        "adresse": "76 rue de la Gloire",
-        "mot_de_passe": "$2y$10$OcvQQEklGgJWep1nyjMwQeTop93k.EddKvKuv5NYw6KQ41DW6ngcu",
-        "id": 41
     }
 ]
