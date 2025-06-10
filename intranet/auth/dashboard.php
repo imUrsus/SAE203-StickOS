@@ -19,6 +19,7 @@ $user = $_SESSION['user'];
     .dropdown-item { color: black !important; }
     .badge-role { background-color: #4FFDBE; color: black; }
     .card-header { background-color: #e9ecef; }
+    .admin-section { margin-top: 30px; }
   </style>
 </head>
 <body>
@@ -27,7 +28,7 @@ $user = $_SESSION['user'];
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="www.StickOS.com">
-      <img src="logo.png" alt="Logo" class="img-fluid" width="200" height="200">
+      <img src="logo.png" alt="Logo" class="img-fluid" width="150" height="150">
     </a>
     <div class="ms-auto">
       <div class="dropdown">
@@ -58,19 +59,8 @@ $user = $_SESSION['user'];
     </div>
   </div>
 
-  <!-- Modules -->
+  <!-- Modules pour tous les utilisateurs -->
   <div class="row g-3">
-    <?php if ($user['role'] === 'admin'): ?>
-      <div class="col-md-4">
-        <div class="card text-center">
-          <div class="card-body">
-            <h5>Gestion Utilisateurs</h5>
-            <a href="admin.php" class="btn btn-danger btn-sm mt-2">Accéder</a>
-          </div>
-        </div>
-      </div>
-    <?php endif; ?>
-
     <div class="col-md-4">
       <div class="card text-center">
         <div class="card-body">
@@ -97,9 +87,134 @@ $user = $_SESSION['user'];
         </div>
       </div>
     </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Projets</h5>
+          <a href="projets.php" class="btn btn-warning btn-sm mt-2">Gérer</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Support</h5>
+          <a href="support.php" class="btn btn-info btn-sm mt-2">Contacter</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5>Paramètres</h5>
+          <a href="settings.php" class="btn btn-light btn-sm mt-2">Configurer</a>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Infos utilisateur -->
+  <?php if ($user['role'] === 'admin'): ?>
+  <div class="admin-section">
+    <div class="admin-section-header">
+      <h4>Administration du système</h4>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Gestion des utilisateurs</h5>
+            <a href="user_management.php" class="btn btn-danger btn-sm mt-2">Accéder</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Gestion des groupes</h5>
+            <a href="group_management.php" class="btn btn-dark btn-sm mt-2">Gérer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Gestionnaire de fichiers</h5>
+            <a href="file_manager.php" class="btn btn-primary btn-sm mt-2">Ouvrir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Annuaire de l'entreprise</h5>
+            <a href="company_directory.php" class="btn btn-success btn-sm mt-2">Consulter</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Annuaire des fournisseurs</h5>
+            <a href="suppliers_directory.php" class="btn btn-warning btn-sm mt-2">Voir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Annuaire des clients</h5>
+            <a href="clients_directory.php" class="btn btn-info btn-sm mt-2">Accéder</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Page Wiki</h5>
+            <a href="wiki.php" class="btn btn-light btn-sm mt-2">Éditer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Visualisation des logs</h5>
+            <a href="logs.php" class="btn btn-secondary btn-sm mt-2">Voir</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Configuration système</h5>
+            <a href="system_config.php" class="btn btn-dark btn-sm mt-2">Configurer</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card text-center h-100">
+          <div class="card-body">
+            <h5>Export des données</h5>
+            <a href="data_export.php" class="btn btn-danger btn-sm mt-2">Exporter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php endif; ?>
+
   <div class="card mt-4">
     <div class="card-header"><strong>Mon compte</strong></div>
     <div class="card-body">
