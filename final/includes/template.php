@@ -16,7 +16,7 @@ function settings($title) {
 function head() {
     $user = $_SESSION ?? [];
 
-    $role = $user['Role'] ?? 'perso';
+    $role = $_SESSION['Role'] ?? 'perso';
     $firstName = htmlspecialchars($user['Firstname'] ?? 'Utilisateur');
 ?>
 <!DOCTYPE html>
