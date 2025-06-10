@@ -1,82 +1,52 @@
-{
-    "7": {
-        "Id": 6,
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "8": {
-        "Id": 7,
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "9": {
-        "Id": 8,
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "10": {
-        "Id": 9,
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "11": {
-        "Id": 10,
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "13": {
-        "Id": 12,
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "16": {
-        "Id": "1",
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": "block_color_count.png",
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "19": {
-        "Id": "2",
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "20": {
-        "Id": "3",
-        "Lastname": "testNom",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": null,
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    },
-    "21": {
-        "Id": "11",
-        "Lastname": "testNombhj",
-        "Firstname": "testPrenom",
-        "Label": "patron",
-        "Photo": "2024-11-28_13-51.png",
-        "Bio": "Ceci est la biographie d'un patron d'entreprise du CAC40"
-    }
-}
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+    "email": "admin@example.com",
+    "first_name": "Admin",
+    "last_name": "User",
+    "role": "admin",
+    "image_path": "img_profil/admin.jpg"
+  },
+  {
+    "id": 2,
+    "username": "Michel",
+    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+    "email": "michel@example.com",
+    "first_name": "Michel",
+    "last_name": "User",
+    "role": "user",
+    "image_path": "img_profil/michel.jpg"
+  },
+  {
+    "id": 3,
+    "username": "manager",
+    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+    "email": "manager@example.com",
+    "first_name": "Manager",
+    "last_name": "User",
+    "role": "manager",
+    "image_path": "img_profil/manager.jpg"
+  },
+  {
+    "id": 4,
+    "username": "direction",
+    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+    "email": "direction@example.com",
+    "first_name": "Direction",
+    "last_name": "User",
+    "role": "direction",
+    "image_path": "img_profil/direction.jpg"
+  },
+  {
+    "id": 5,
+    "username": "admin",
+    "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+    "email": "admin@example.com",
+    "first_name": "Admin",
+    "last_name": "User",
+    "role": "admin",
+    "image_path": "img_profil/admin2.jpg"
+  }
+]
