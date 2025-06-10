@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config/Auth.php';
+require_once '../auth/login.php';
 Auth::requireLogin();
 $user = $_SESSION['user'];
 ?>
