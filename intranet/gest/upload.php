@@ -10,7 +10,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once 'includes/auth.php';
+require_once '../includes/login.php';
 
 if (!is_logged_in() || !has_permission('upload')) {
     exit("Accès refusé.");
@@ -26,17 +26,21 @@ if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
 
 // Variables de base
 $base_dir = "uploads/";
-$filename = basename($_FILES['file']['name']);
-$ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+$original_name = basename($_FILES['file']['name']);
+$ext = strtolower(pathinfo($original_name, PATHINFO_EXTENSION));
 $allowed = ['csv', 'txt'];
 
 if (!in_array($ext, $allowed)) {
     exit("Type de fichier non autorisé. Extensions valides : .csv, .txt");
 }
 
-// 🔄 Correction : lire le choix depuis POST, pas SESSION
-$target = $_POST['upload_target'] ?? null;
+// Sécurise le nom du fichier (évite ../ etc.)
+$filename = preg_replace('/[^a-zA-Z0-9_-]/', '_', pathinfo($original_name, PATHINFO_FILENAME));
+$filename = substr($filename, 0, 100); // limite longueur
+$filename .= '_' . date('Ymd_His') . '.' . $ext;
 
+// Lecture de la destination
+$target = $_POST['upload_target'] ?? null;
 if (!$target) {
     exit("Destination d’envoi invalide.");
 }
@@ -48,13 +52,12 @@ switch ($target) {
         break;
 
     case 'private':
-        if (!isset($_SESSION['nom'], $_SESSION['prenom'])) {
-            exit("Informations utilisateur incomplètes.");
-        }
-        $nomPrenom = $_SESSION['nom'] . '-' . $_SESSION['prenom'];
-        $upload_dir = $base_dir . "private/" . $nomPrenom . "/";
-        break;
-
+    if (!isset($_SESSION['Lastname'], $_SESSION['Firstname'])) {
+        exit("Informations utilisateur incomplètes.");
+    }
+    $nomPrenom = strtolower($_SESSION['Lastname'] . '-' . $_SESSION['Firstname']);
+    $upload_dir = $base_dir . "private/" . $nomPrenom . "/";
+    break;
     case 'depts':
         if (!isset($_SESSION['role'])) {
             exit("Rôle utilisateur manquant.");
@@ -75,7 +78,7 @@ switch ($target) {
         exit("Destination d’envoi invalide.");
 }
 
-// Créer le dossier si besoin
+// Crée le dossier si besoin
 if (!is_dir($upload_dir)) {
     if (!mkdir($upload_dir, 0777, true)) {
         exit("Impossible de créer le dossier : $upload_dir");
@@ -88,6 +91,6 @@ if (!move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
     exit("Échec du déplacement du fichier.");
 }
 
-header('Location: files.php');
+header('Location: drive.php');
 exit;
 ?>

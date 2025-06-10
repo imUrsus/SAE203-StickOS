@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'includes/auth.php';
+require_once 'includes/login.php';
 
 if (!is_logged_in() || !has_permission('delete')) {
     exit("Accès refusé.");
@@ -21,5 +21,5 @@ if (!file_exists($path)) {
 if (!unlink($path)) {
     exit("Échec de la suppression.");
 }
-header('Location: files.php');
+header('Location: drive.php');
 exit;

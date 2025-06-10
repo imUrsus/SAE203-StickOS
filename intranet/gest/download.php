@@ -3,7 +3,7 @@
 // $path contient uploads/ + le contenur de $filename
 
 session_start();
-require_once 'includes/auth.php';
+require_once 'includes/login.php';
 
 if (!is_logged_in() || !has_permission('view')) {
     exit("Accès refusé.");

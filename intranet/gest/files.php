@@ -37,11 +37,18 @@ function folderSize($dir) {
 // === BARRE UTILISATION DISQUE PAR PÔLE === //
 $totalLimit = 5 * 1024 * 1024 * 1024; // 5 Go
 $baseDir = 'uploads/';
-$poles = ['RH', 'Direction', 'Manager', 'Salarie', 'IT', 'publique'];
+$poles = [
+    'depts/hr',
+    'depts/it',
+    'depts/management',
+    'public',
+    'private' 
+];
+
 $usage = [];
 
 foreach ($poles as $pole) {
-    $path = $baseDir . $pole;
+    $path = $baseDir . $pole . '/';
     $usage[$pole] = is_dir($path) ? folderSize($path) : 0;
 }
 
@@ -100,20 +107,24 @@ foreach ($rii as $file) {
     
     echo "<li class='list-group-item d-flex justify-content-between align-items-center'>";
     echo "<span>$relativePath</span>";
+$buttons = "";
 
-    if (has_permission('view')) {
-        echo "<a class='btn btn-sm btn-primary me-2' href='download.php?file=$urlPath'>Télécharger</a>";
-    }
+if (has_permission('view')) {
+    $buttons .= "<a class='btn btn-sm btn-primary' href='download.php?file=$urlPath'>Télécharger</a>";
+}
 
-    if (has_permission('delete')) {
-        echo "<a class='btn btn-sm btn-danger' href='delete.php?file=$urlPath'>Supprimer</a>";
-    }
+if (has_permission('delete')) {
+    $buttons .= "<a class='btn btn-sm btn-danger ms-2' href='delete.php?file=$urlPath'>Supprimer</a>";
+}
+
+if ($buttons !== "") {
+    echo "<span class='d-flex'>$buttons</span>"; // evite balise html vide si aucune permission
+}
 
     echo "</li>";
 }
 ?>
 </ul>
-
 <?php if (has_permission('upload')): ?>
 <form action="upload.php" method="post" enctype="multipart/form-data">
     <div class="mb-3">
