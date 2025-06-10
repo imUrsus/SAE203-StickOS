@@ -7,27 +7,28 @@ head();
 if (isset($_POST['send'])){
 $isUserFind = false;
 $password=htmlspecialchars($_POST['password'] );
-$name = htmlspecialchars($_POST['name'] );
-$jsonFile = 'data/utilisateur.json';
+$name = htmlspecialchars($_POST['user_name'] );
+$jsonFile = '../data/users.json';
 $jsonData = file_get_contents($jsonFile);
 $utilisateur = json_decode($jsonData, true);
+
 echo"<pre>";
 foreach($utilisateur as $user){
     if ($user["username"] == $name){
         if (password_verify($password, $user["password"])){
             $isUserFind = true;
-            $_SESSION["username"] = $user["utilisateur"];
-            $_SESSION["mail"] = $user["email"];
-            $_SESSION["role"] = $user["role"];
-            $_SESSION["vehicule"] = $user["vehicule"];
-            $_SESSION["avatar"] = $user["avatar"];
+            $_SESSION["Lastname"] = $user["last_name"];
+            $_SESSION["Firstname"] = $user["email"];
+            $_SESSION["Role"] = $user["role"];
+            $_SESSION["Photo"] = $user["Photo"];
+            $_SESSION["Bio"] = $user["bio"];
 
             header("Location:../dashboard.php");
         }
         else{
             echo "<script type='text/javascript'>
             alert('mot de passe incorect');
-            window.location.href = 'connexion.php';
+            window.location.href = 'login.php';
           </script>";
           exit();
         }
@@ -36,17 +37,18 @@ foreach($utilisateur as $user){
 if (!$isUserFind) {
     echo "<script type='text/javascript'>
             alert('Informations incorrectes');
-            window.location.href = 'connexion.php';
+            window.location.href = 'login.php';
           </script>";
     exit();
 }
 }else{
     ?>
 <body>
+
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
         <h3 class="text-center mb-4">Connexion</h3>
-        <form action="connexion.php" method="post" class="form-signin">
+        <form action="login.php" method="post" class="form-signin">
             <div class="mb-3">
                 <label for="name" class="form-label">Nom d utilisateur :</label>
                 <input type="text" name="user_name" id="name" class="form-control" placeholder="Votre nom d'utilisateur" required>
