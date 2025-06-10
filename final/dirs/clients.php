@@ -1,5 +1,5 @@
 <?php
-require_once '../../includes/clients/functions.php';
+require_once __DIR__ . '../../includes/clients/functions.php';
 $clients = getAllClients();
 ?>
 <!DOCTYPE html>
