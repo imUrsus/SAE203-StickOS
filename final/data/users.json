@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
   {
     "id": 1,
@@ -60,3 +61,69 @@
     "image_path": "img_profil/admin2.jpg"
   }
 ]
+=======
+{
+    "0": {
+        "id": 1,
+        "username": "admin",
+        "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+        "email": "admin@example.com",
+        "first_name": "Admin",
+        "last_name": "User",
+        "groups": [
+            "admin"
+        ],
+        "is_active": true,
+        "role": "admin"
+    },
+    "1": {
+        "id": 2,
+        "username": "Michel",
+        "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+        "email": "michel@example.com",
+        "first_name": "Michel",
+        "last_name": "User",
+        "groups": [
+            "salaries"
+        ],
+        "is_active": true,
+        "role": "user"
+    },
+    "3": {
+        "id": 4,
+        "username": "direction",
+        "password": "$2y$10$4BKjxUV.ulJ4Nxu9j0D6bejzUtd2oafX5o7yTh.aUK3ySj129fteO",
+        "email": "direction@example.com",
+        "first_name": "Direction",
+        "last_name": "User",
+        "groups": [
+            "direction",
+            "managers"
+        ],
+        "is_active": true,
+        "role": "direction"
+    },
+    "5": {
+        "id": "5",
+        "username": "admin",
+        "password": "gsfdgfds",
+        "email": "admin@example.com",
+        "first_name": "Admin",
+        "last_name": "User",
+        "role": "admin",
+        "photo": null,
+        "bio": "fdssgf"
+    },
+    "6": {
+        "id": 6,
+        "username": "fdsgfd",
+        "password": "fsgdf",
+        "email": "gfdgds@\u00e6\u00ca\u00f8.com",
+        "first_name": "bhjkvgh",
+        "last_name": "fsdgsd",
+        "role": "bkhvghk",
+        "photo": "vghkvghk",
+        "bio": "vghkvhg"
+    }
+}
+>>>>>>> 3a4cef9 (Modification de la configuration des utilisateurs)

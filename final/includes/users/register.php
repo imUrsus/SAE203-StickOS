@@ -2,8 +2,6 @@
 <?php
 session_start();
 
-print_r($_SESSION);
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     /*
     if (isset($_SESSION["role"])) {
@@ -18,16 +16,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     */
 
 
-    $existingContent = json_decode(json: file_get_contents(filename: "./data/annuaireEntreprises.json"), associative:true);
+    $FILENAME = "../../data/users.json";
+    $existingContent = json_decode(file_get_contents($FILENAME), true);
     // Get the highest ID
     $max_id = 1;
     foreach ($existingContent as $i => $userInfos) {
-        if ($userInfos["Id"] > $max_id) {
-            $max_id = intval($userInfos["Id"]);
+        if ($userInfos["id"] > $max_id) {
+            $max_id = intval($userInfos["id"]);
         }
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3a4cef9 (Modification de la configuration des utilisateurs)
     /*
         "id": 1,
         "username": "admin",
@@ -55,12 +57,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $updatedJsonContent = json_encode(value: $existingContent, flags: JSON_PRETTY_PRINT);
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     file_put_contents("./data/annuaireEntreprises.json", $updatedJsonContent);
     header(header:"Location:showEntreprises.php?message=L'utilisateur a bien été ajouteé");
 =======
     file_put_contents($FILENAME, $updatedJsonContent);
     header(header:"Location:../../dirs/users.php?message=L'utilisateur a bien été ajouté");
 >>>>>>> 5aa363e (Modification des fichiers de configuration des users)
+=======
+    file_put_contents($FILENAME, $updatedJsonContent);
+    header(header:"Location:../../dirs/users.php?message=L'utilisateur a bien été ajouté");
+>>>>>>> 3a4cef9 (Modification de la configuration des utilisateurs)
 }
 ?>
 </pre>
@@ -70,18 +77,70 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <html lang="en">
 <head>
     <?php
-    include "../../scripts/fonctions.php";
+    include "../fonctions.php";
     parametres(title: "test");
     ?>
 </head>
 <body>
     <main>
-
         <div class="container-fluid d-flex justify-content-center">
-            <div id="connexionFeedbackContainer" class="container w-75 p-1">
-                <p id="connexionFeedback" class="text-danger d-none mb-0  mx-5">Veuillez réessayer!</p> 
+            <div class="col-12 col-md-6">
+                <div class="card-body p-3 p-md-4 p-xl-5">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-5">
+                                <h3>Créer un utilisateur</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <form action="<?php echo $_SERVER["PHP_SELF"] ?>" method="POST">
+                        <input type="text" class="form-control" name="Id" id="Id" hidden>
+                        <div class="row gy-3 gy-md-4 overflow-hidden">
+                            <div class="col-12">
+                                <label for="newUsername" class="form-label">Nom d'utilisateur <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="newUsername" id="newUsername" placeholder="johnDoe35" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="newPassword" class="form-label">Mot de passe <span class="text-danger">*</span></label>
+                                <input type="password" class="form-control" name="newPassword" id="newPassword" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="newEmail" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" name="newEmail" id="newEmail" placeholder="exemple@exemple.com" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="newLastname" class="form-label">Nom <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="newLastname" id="newLastname" placeholder="Doe" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="newFirstname" class="form-label">Prénom <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="newFirstname" id="newFirstname" placeholder="John" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="newRole" class="form-label">Role <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="newRole" id="newRole" placeholder="direction" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="newRole" class="form-label">Photo <span class="text-danger">*</span></label>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" name="newPhoto" id="newPhoto">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="newBio" class="form-label">Bio <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" name="newBio" id="newBio" placeholder="Ceci est une biographie" required>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-grid">
+                                    <button class="btn bsb-btn-xl btn-primary" type="submit">Créer</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
+<<<<<<< HEAD
         <section class="p-2">
             <div class="container">
                 <div class="card border-light-subtle shadow-sm">
@@ -192,6 +251,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
         </section>
         <!-- SCRIPT JS COMME CONNEXION.PHP POUR INFORMER SI USER EXISTE DEJA -->
+=======
+>>>>>>> 3a4cef9 (Modification de la configuration des utilisateurs)
     </main>
 
     <footer>
@@ -199,9 +260,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         pieddepage();
         ?>
     </footer>
-
-    <script src="scripts/script.js">
-        getConnexionFeedback();
-    </script>
 </body>
 </html>
