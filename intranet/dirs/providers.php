@@ -2,10 +2,12 @@
 <html lang="fr">
 
 <?php 
-/*require_once '../includes/template.php';
-parametres("Partner");
-entete();
-navigation("Partner", )*/?>
+require_once '../includes/template.php';
+settings("Partner");
+head();
+session_start();
+?>
+
 <body>
 
         <tbody>
@@ -13,7 +15,6 @@ navigation("Partner", )*/?>
             $jsonFile = '../data/providers.json';
             $jsonData = file_get_contents($jsonFile);
             $utilisateurs = json_decode($jsonData, true);
-            session_start();
             $_SESSION["role"]="admin";
             if ($_SESSION["role"]=="admin" | $_SESSION["role"]=="managers") {
                 ?><table class="table table-bordered table-hover">
@@ -96,7 +97,7 @@ navigation("Partner", )*/?>
 
             <?php }
             
-            pieddepage()?>
+            foot()?>
 
 </body>
 </html>
