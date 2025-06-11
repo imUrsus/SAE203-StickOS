@@ -10,10 +10,14 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once '../includes/login.php';
+require_once(__DIR__ . '/../clients/functions.php');
 
-if (!is_logged_in() || !has_permission('upload')) {
-    exit("Accès refusé.");
+$role = strtolower($_SESSION['role'] ?? '');
+$lastname = $_SESSION['Lastname'] ?? '';
+$firstname = $_SESSION['Firstname'] ?? '';
+
+if (!in_array($role, ['admin', 'manager', 'direction', 'salarie'])) {
+    exit("Rôle non autorisé.");
 }
 
 if (!isset($_FILES['file'])) {
@@ -24,73 +28,49 @@ if ($_FILES['file']['error'] !== UPLOAD_ERR_OK) {
     exit("Erreur PHP : " . $_FILES['file']['error']);
 }
 
-// Variables de base
-$base_dir = "uploads/";
+$base_dir = __DIR__ . "/uploads/";
+$allowed = ['csv', 'txt'];
+
 $original_name = basename($_FILES['file']['name']);
 $ext = strtolower(pathinfo($original_name, PATHINFO_EXTENSION));
-$allowed = ['csv', 'txt'];
 
 if (!in_array($ext, $allowed)) {
     exit("Type de fichier non autorisé. Extensions valides : .csv, .txt");
 }
 
-// Sécurise le nom du fichier (évite ../ etc.)
 $filename = preg_replace('/[^a-zA-Z0-9_-]/', '_', pathinfo($original_name, PATHINFO_FILENAME));
-$filename = substr($filename, 0, 100); // limite longueur
-$filename .= '_' . date('Ymd_His') . '.' . $ext;
+$filename = substr($filename, 0, 100) . '_' . date('Ymd_His') . '.' . $ext;
 
-// Lecture de la destination
-$target = $_POST['upload_target'] ?? null;
-if (!$target) {
-    exit("Destination d’envoi invalide.");
-}
-
-// Déterminer le dossier de destination
-switch ($target) {
-    case 'public':
+// Déterminer le dossier en fonction du rôle
+switch ($role) {
+    case 'admin':
+    case 'manager':
         $upload_dir = $base_dir . "public/";
         break;
-
-    case 'private':
-    if (!isset($_SESSION['Lastname'], $_SESSION['Firstname'])) {
-        exit("Informations utilisateur incomplètes.");
-    }
-    $nomPrenom = strtolower($_SESSION['Lastname'] . '-' . $_SESSION['Firstname']);
-    $upload_dir = $base_dir . "private/" . $nomPrenom . "/";
-    break;
-    case 'depts':
-        if (!isset($_SESSION['role'])) {
-            exit("Rôle utilisateur manquant.");
-        }
-        $role = strtolower($_SESSION['role']);
-        $dept_map = [
-            'rh' => 'hr',
-            'it' => 'it',
-            'management' => 'management'
-        ];
-        if (!isset($dept_map[$role])) {
-            exit("Département inconnu.");
-        }
-        $upload_dir = $base_dir . "depts/" . $dept_map[$role] . "/";
+    case 'direction':
+        $upload_dir = $base_dir . "depts/management/";
         break;
-
+    case 'salarie':
+        if (empty($lastname) || empty($firstname)) {
+            exit("Nom/prénom manquant.");
+        }
+        $upload_dir = $base_dir . "private/" . strtolower($lastname . '-' . $firstname) . "/";
+        break;
     default:
-        exit("Destination d’envoi invalide.");
+        exit("Rôle non reconnu.");
 }
 
-// Crée le dossier si besoin
-if (!is_dir($upload_dir)) {
-    if (!mkdir($upload_dir, 0777, true)) {
-        exit("Impossible de créer le dossier : $upload_dir");
-    }
+// Crée le dossier si nécessaire
+if (!is_dir($upload_dir) && !mkdir($upload_dir, 0777, true)) {
+    exit("Impossible de créer le dossier : $upload_dir");
 }
 
-// Déplacement du fichier
+// Déplacement final
 $destination = $upload_dir . $filename;
 if (!move_uploaded_file($_FILES['file']['tmp_name'], $destination)) {
     exit("Échec du déplacement du fichier.");
 }
 
-header('Location: drive.php');
+header('Location: /drive.php');
 exit;
 ?>
