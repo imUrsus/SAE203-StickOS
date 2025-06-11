@@ -1,25 +1,32 @@
 <?php
 session_start();
-require_once 'includes/login.php';
 
-if (!is_logged_in() || !has_permission('delete')) {
+// autorisations locales à ce fichier
+$role = strtolower($_SESSION['role'] ?? '');
+$can_delete = in_array($role, ['admin', 'manager']);
+
+if (!$can_delete) {
     exit("Accès refusé.");
 }
 
 if (!isset($_GET['file'])) {
     exit("Fichier non spécifié.");
 }
+
 $relativePath = $_GET['file'];
-// ⚠ Protection anti traversal
 if (str_contains($relativePath, '..')) {
     exit("Chemin interdit.");
 }
-$path = 'uploads/' . $relativePath;
+
+$path = __DIR__ . '/uploads/' . $relativePath;
+
 if (!file_exists($path)) {
     exit("Fichier introuvable.");
 }
+
 if (!unlink($path)) {
     exit("Échec de la suppression.");
 }
-header('Location: drive.php');
+
+header('Location: ../../drive.php');
 exit;
