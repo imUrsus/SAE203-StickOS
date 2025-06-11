@@ -17,11 +17,15 @@ foreach($utilisateur as $user){
     if ($user["username"] == $name){
         if (password_verify($password, $user["password"])){
             $isUserFind = true;
-            $_SESSION["Lastname"] = $user["last_name"];
-            $_SESSION["Firstname"] = $user["email"];
-            $_SESSION["Role"] = $user["role"];
-            $_SESSION["Photo"] = $user["Photo"];
-            $_SESSION["Bio"] = $user["bio"];
+            $_SESSION["id"] = $user["id"];
+            $_SESSION["username"] = $user["username"];
+            $_SESSION["password"] = $user["password"];
+            $_SESSION["email"] = $user["email"];
+            $_SESSION["lastname"] = $user["last_name"];
+            $_SESSION["firstname"] = $user["email"];
+            $_SESSION["role"] = $user["role"];
+            $_SESSION["photo"] = $user["Photo"];
+            $_SESSION["bio"] = $user["bio"];
 
             header("Location:../wiki.html");
         }
