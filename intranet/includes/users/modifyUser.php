@@ -2,7 +2,9 @@
 <?php
 session_start();
 
-//print_r($_SESSION);
+if (!isset($_SESSION["action"])) {
+    header(header:"Location:".$_SERVER["HTTP_REFERER"]);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     /*
