@@ -1,6 +1,7 @@
 <?php
 include_once "../includes/template.php";
 settings(title:"Annuaire d'entreprise");
+session_start();
 
 head();
     $data = json_decode(file_get_contents("../data/users.json"), true);
