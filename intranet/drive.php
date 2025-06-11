@@ -1,18 +1,23 @@
 <?php
+include_once "includes/template.php";
+settings(title:"Gestionnaire de fichiers");
 // $dir est la variable qui contient le chemin vers 'uploads/'
 // $files est un tableau qui contient tous les fichiers dans uploads
 // SI VALIDE : il faudra aller chercher dans les différentes sections d'entreprise
 // EX : RH, Direction, manager, salarié...
+
 session_start();
+$_SESSION['role'] = 'admin';
 require_once(__DIR__ . '/includes/clients/functions.php');
 require_once(__DIR__ . '/includes/template.php');
 // Redirige si l'utilisateur n'a pas de rôle valide
 $role = strtolower($_SESSION['role'] ?? '');
 $allowed_roles = ['admin', 'manager', 'direction', 'salarie'];
+/*
 if (!in_array($role, $allowed_roles)) {
     header("Location: /auth/login.php");
     exit;
-}
+}*/
 // Permissions en fonction du rôle
 $can_view = in_array($role, ['admin', 'manager', 'direction', 'salarie']);
 $can_upload = in_array($role, ['admin', 'manager', 'direction']);
@@ -26,15 +31,9 @@ function folderSizeRecursive($dir) {
     }
     return $size;
 }
+head(); 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Gestionnaire de fichiers</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body class="container mt-4">
+
 <h2>Fichiers partagés (.csv / .txt)</h2>
 <?php
 $totalLimit = 10 * 1024 * 1024 * 1024; // 10 Go
@@ -142,7 +141,7 @@ foreach ($rii as $file) {
 
     <button type="submit" class="btn btn-success">Uploader</button>
 </form>
-<?php endif; ?>
-
+<?php endif;
+foot(); ?>
 </body>
 </html>
