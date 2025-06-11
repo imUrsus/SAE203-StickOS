@@ -1,18 +1,8 @@
 <?php
 function settings($title) {
     $GLOBALS["title"] = $title;
-    $user['first_name'] = 'lolo'
-?>
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title><?php echo("$title - StickOS"); ?></title>
-        <link rel="icon" type="image/ico" href="../assets/img/favicon.ico"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    </head>
-<?php
 }
+
 function head() {
     $user = $_SESSION ?? [];
 
@@ -88,6 +78,7 @@ function head() {
 </nav>
 <?php
 }
+
 function foot() {
 ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
