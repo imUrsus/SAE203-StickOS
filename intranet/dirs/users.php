@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php
-    include "../includes/fonctions.php";
-   parametres(title: "test");
-    ?>
-</head>
-<body>
-    <?php
+<?php
+include_once "../includes/template.php";
+settings(title:"Annuaire d'entreprise");
 
+head();
     $data = json_decode(file_get_contents("../data/users.json"), true);
     ?>
 
@@ -82,10 +76,6 @@
             </table>
         </div>
     </div>
-    <footer>
-        <?php
-        pieddepage();
-        ?>
-    </footer>
+    <?php foot(); ?>
 </body>
 </html>
