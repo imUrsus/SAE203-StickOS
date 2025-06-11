@@ -11,7 +11,7 @@ head();
         <div class="container-fluid mx-2 my-4">
             <h1>Annuaire de l'entreprise</h1>
             <?php
-            if (($_SESSION["role"] != "admin") || ($_SESSION["role"] == "manager")) {
+            if (($_SESSION["role"] == "admin") || ($_SESSION["role"] == "manager")) {
                 if (isset($_GET["message"])) {
                     echo "<p class='fs-4'>".$_GET["message"]."</p>";
                 }
@@ -55,7 +55,7 @@ head();
                             <td><?php echo $entreprise["role"] ?></td>
                             <input name="role" type="text" value="<?php echo $entreprise["role"] ?>" hidden></input>
                         <?php
-                        if (($_SESSION["role"] != "admin") || ($_SESSION["role"] == "manager")) {
+                        if (($_SESSION["role"] == "admin") || ($_SESSION["role"] == "manager")) {
                         ?>
                             <td>
                                 <button class="btn btn-warning" type="submit" name="modify">Modifier</button>
