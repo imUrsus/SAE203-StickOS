@@ -13,11 +13,7 @@ require_once(__DIR__ . '/includes/template.php');
 // Redirige si l'utilisateur n'a pas de rôle valide
 $role = strtolower($_SESSION['role'] ?? '');
 $allowed_roles = ['admin', 'manager', 'direction', 'salarie'];
-/*
-if (!in_array($role, $allowed_roles)) {
-    header("Location: /auth/login.php");
-    exit;
-}*/
+
 // Permissions en fonction du rôle
 $can_view = in_array($role, ['admin', 'manager', 'direction', 'salarie']);
 $can_upload = in_array($role, ['admin', 'manager', 'direction']);
