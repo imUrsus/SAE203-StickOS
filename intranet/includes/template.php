@@ -37,6 +37,7 @@ function head() {
                             <li><a class="dropdown-item" href="../dirs/users.php">Gestion des utilisateurs</a></li>
                             <li><a class="dropdown-item" href="../includes/users/modifyUser.php">Modifier un utilisateur</a></li>
                             <li><a class="dropdown-item" href="../includes/users/deleteUser.php">Supprimer un utilisateur</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
@@ -52,13 +53,16 @@ function head() {
                 <?php elseif ($role === 'managers'): ?>
                     <li class="nav-item"><a class="nav-link" href="../dirs/clients.php">Clients</a></li>
                     <li class="nav-item"><a class="nav-link" href="../dirs/providers.php">Fournisseurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
 
                 <?php elseif ($role === 'direction'): ?>
                     <li class="nav-item"><a class="nav-link" href="../dirs/clients.php">Clients</a></li>
                     <li class="nav-item"><a class="nav-link" href="../dirs/providers.php">Fournisseurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
 
 
                 <?php elseif ($role === 'salariés'): ?>
+                     <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
 
                 <?php else: ?>
                     <!-- perso -->
