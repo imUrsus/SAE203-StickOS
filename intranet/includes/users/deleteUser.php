@@ -1,6 +1,11 @@
 <pre>
 <?php
-    session_start();
+session_start();
+
+if (!isset($_SESSION["action"])) {
+    header(header:"Location:".$_SERVER["HTTP_REFERER"]);
+}
+
 /*
 if (isset($_SESSION["role"])) {
     if (($_SESSION["role"] != "admin") || ($_SESSION["role"] != "manager")) {
