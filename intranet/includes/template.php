@@ -1,5 +1,6 @@
 <?php
 function settings($title) {
+    session_start();
     $GLOBALS["title"] = $title;
 }
 
@@ -33,7 +34,7 @@ function head() {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">Utilisateurs</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../includes/users/users.php">Gestion des utilisateurs</a></li>
+                            <li><a class="dropdown-item" href="../dirs/users.php">Gestion des utilisateurs</a></li>
                             <li><a class="dropdown-item" href="../includes/users/modifyUser.php">Modifier un utilisateur</a></li>
                             <li><a class="dropdown-item" href="../includes/users/deleteUser.php">Supprimer un utilisateur</a></li>
                         </ul>
