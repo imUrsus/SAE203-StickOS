@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../includes/template.php';
 settings('Login');
 head();
