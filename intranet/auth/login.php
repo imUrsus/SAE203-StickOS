@@ -1,69 +1,69 @@
 <?php
 session_start();
-require_once 'config/Auth.php';
+require_once '../includes/template.php';
+settings('Login');
+head();
 
-$error = '';
+if (isset($_POST['send'])){
+$isUserFind = false;
+$password=htmlspecialchars($_POST['password'] );
+$name = htmlspecialchars($_POST['user_name'] );
+$jsonFile = '../data/users.json';
+$jsonData = file_get_contents($jsonFile);
+$utilisateur = json_decode($jsonData, true);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'] ?? '';
-    $password = $_POST['password'] ?? '';
+echo"<pre>";
+foreach($utilisateur as $user){
+    if ($user["username"] == $name){
+        if (password_verify($password, $user["password"])){
+            $isUserFind = true;
+            $_SESSION["Lastname"] = $user["last_name"];
+            $_SESSION["Firstname"] = $user["email"];
+            $_SESSION["Role"] = $user["role"];
+            $_SESSION["Photo"] = $user["Photo"];
+            $_SESSION["Bio"] = $user["bio"];
 
-    if (Auth::login($username, $password)) {
-        header('Location: dashboard.php');
-        exit();
-    } else {
-        $error = 'Identifiants incorrects';
+            header("Location:../wiki.php");
+        }
+        else{
+            echo "<script type='text/javascript'>
+            alert('mot de passe incorect');
+            window.location.href = 'login.php';
+          </script>";
+          exit();
+        }
     }
 }
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <title>Connexion</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: linear-gradient(#4FFDBE, #188FA7);
-        }
-    </style>
-</head>
+if (!$isUserFind) {
+    echo "<script type='text/javascript'>
+            alert('Informations incorrectes');
+            window.location.href = 'login.php';
+          </script>";
+    exit();
+}
+}else{
+    ?>
 <body>
 
-    <!-- NAVBAR avec logo -->
-    <nav class="navbar bg-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-auto">
-                    <img src="logo.png" alt="Logo" class="img-fluid" width="200" height="200">
-                </div>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+        <h3 class="text-center mb-4">Connexion</h3>
+        <form action="login.php" method="post" class="form-signin">
+            <div class="mb-3">
+                <label for="name" class="form-label">Nom d utilisateur :</label>
+                <input type="text" name="user_name" id="name" class="form-control" placeholder="Votre nom d'utilisateur" required>
             </div>
-        </div>
-    </nav>
-
-    <div class="container d-flex vh-100">
-        <div class="row justify-content-center align-self-center w-100">
-            <div class="col-md-4 text-center">
-                <h2 class="text-white mb-4">Connexion</h2>
-
-                <?php if ($error): ?>
-                    <div class="alert alert-danger"><?= $error ?></div>
-                <?php endif; ?>
-
-                <form method="post">
-                    <div class="mb-3">
-                        <input type="text" name="username" class="form-control" placeholder="Nom d'utilisateur" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="password" name="password" class="form-control" placeholder="Mot de passe" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
-                </form>
+            <div class="mb-3">
+                <label for="password" class="form-label">Votre mot de passe :</label>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Votre mot de passe" required>
             </div>
-        </div>
+            <button type="submit" name="send" class="btn btn-primary w-100">Se connecter</button>
+        </form>
+        <br>
+          <p class="text-center">Pas encore inscrit?<a href="inscription.php"> inscrivez-vous</a> </p>         
     </div>
+</div>
 
 </body>
 </html>
+<?php } ?>
