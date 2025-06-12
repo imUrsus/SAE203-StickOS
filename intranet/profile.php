@@ -1,6 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION["Id"])) {
+
+if (!isset($_SESSION["id"])) {
     echo "<p>Erreur : utilisateur non connecté.</p>";
     exit();
 }
@@ -10,40 +11,40 @@ if (file_exists($jsonFile) && filesize($jsonFile) > 0) {
     $jsonData = file_get_contents($jsonFile);
     $utilisateurs = json_decode($jsonData, true);
 }
-$userIndex = array_search($_SESSION["Id"], array_column($utilisateurs, "Id"));
+$userIndex = array_search($_SESSION["id"], array_column($utilisateurs, "id"));
 if ($userIndex === false) {
     echo "<p>Utilisateur non trouvé.</p>";
     exit();
 }
 $user = $utilisateurs[$userIndex];
 if (isset($_POST['update'])) {
-    $user["Lastname"] = htmlspecialchars($_POST["Lastname"]);
-    $user["Firstname"] = htmlspecialchars($_POST["Firstname"]);
-    $user["Label"] = htmlspecialchars($_POST["Label"]);
-    $user["Bio"] = htmlspecialchars($_POST["Bio"]);
-    if (!empty($_FILES["Photo"]["name"])) {
+    $user["last_name"] = htmlspecialchars($_POST["last_name"]);
+    $user["first_name"] = htmlspecialchars($_POST["first_name"]);
+    $user["label"] = htmlspecialchars($_POST["label"]);
+    $user["bio"] = htmlspecialchars($_POST["bio"]);
+    if (!empty($_FILES["photo"]["name"])) {
         $uploadDir = 'img/';
-        $ext = strtolower(pathinfo($_FILES["Photo"]["name"], PATHINFO_EXTENSION));
+        $ext = strtolower(pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION));
         $photoName = uniqid() . '.' . $ext;
         $photoPath = $uploadDir . $photoName;
         $maxSize = 2 * 1024 * 1024;
         $allowed = ['jpg', 'jpeg', 'png'];
-        if ($_FILES["Photo"]["error"] === UPLOAD_ERR_OK) {
+        if ($_FILES["photo"]["error"] === UPLOAD_ERR_OK) {
             if ($_FILES["Photo"]["size"] > $maxSize) {
                 exitWithAlert("Fichier trop volumineux (max 2Mo)");
             }
             if (!in_array($ext, $allowed)) {
                 exitWithAlert("Format d'image non supporté (JPG, JPEG, PNG)");
             }
-            if (!getimagesize($_FILES["Photo"]["tmp_name"])) {
+            if (!getimagesize($_FILES["photo"]["tmp_name"])) {
                 exitWithAlert("Fichier invalide : ce n'est pas une image.");
             }
             // Supprime l'ancienne image
-            if (!empty($user["Photo"]) && file_exists('img/' . $user["Photo"])) {
-                unlink('img/' . $user["Photo"]);
+            if (!empty($user["photo"]) && file_exists('img/' . $user["photo"])) {
+                unlink('img/' . $user["photo"]);
             }
-            if (move_uploaded_file($_FILES["Photo"]["tmp_name"], $photoPath)) {
-                $user["Photo"] = basename($photoPath);
+            if (move_uploaded_file($_FILES["photo"]["tmp_name"], $photoPath)) {
+                $user["photo"] = basename($photoPath);
             } else {
                 exitWithAlert("Erreur lors de l'upload de l'image.");
             }
@@ -82,36 +83,36 @@ function displayRoleBadge($role) {
                 </div>
                 <div class="card-body">
                     <div class="text-center mb-4">
-                        <img src="img/<?= htmlspecialchars($user["Photo"] ?? 'default.jpg') ?>" alt="Profil" class="img-thumbnail rounded-circle" style="width: 150px;">
+                        <img src="img/<?= htmlspecialchars($user["photo"] ?? 'default.jpg') ?>" alt="Profil" class="img-thumbnail rounded-circle" style="width: 150px;">
                     </div>
                     <ul class="list-group mb-4">
-                        <li class="list-group-item"><strong>Nom :</strong> <?= htmlspecialchars($user["Lastname"]) ?></li>
-                        <li class="list-group-item"><strong>Prénom :</strong> <?= htmlspecialchars($user["Firstname"]) ?></li>
-                        <li class="list-group-item"><strong>Label :</strong> <?= htmlspecialchars($user["Label"]) ?></li>
-                        <li class="list-group-item"><strong>Bio :</strong><br><?= nl2br(htmlspecialchars($user["Bio"])) ?></li>
-                        <li class="list-group-item"><strong>Rôle :</strong> <?= displayRoleBadge($user["Role"] ?? 'perso') ?></li>
+                        <li class="list-group-item"><strong>Nom :</strong> <?= htmlspecialchars($user["last_name"]) ?></li>
+                        <li class="list-group-item"><strong>Prénom :</strong> <?= htmlspecialchars($user["first_name"]) ?></li>
+                        <li class="list-group-item"><strong>Label :</strong> <?= htmlspecialchars($user["label"]) ?></li>
+                        <li class="list-group-item"><strong>Bio :</strong><br><?= nl2br(htmlspecialchars($user["bio"])) ?></li>
+                        <li class="list-group-item"><strong>Rôle :</strong> <?= displayRoleBadge($user["role"] ?? 'perso') ?></li>
                     </ul>
                     <h5 class="mb-3">Modifier mon profil</h5>
                     <form action="profile.php" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
-                            <label for="Lastname" class="form-label">Nom</label>
-                            <input type="text" name="Lastname" id="Lastname" class="form-control" value="<?= htmlspecialchars($user["Lastname"]) ?>" required>
+                            <label for="last_name" class="form-label">Nom</label>
+                            <input type="text" name="last_name" id="Lastname" class="form-control" value="<?= htmlspecialchars($user["last_name"]) ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="Firstname" class="form-label">Prénom</label>
-                            <input type="text" name="Firstname" id="Firstname" class="form-control" value="<?= htmlspecialchars($user["Firstname"]) ?>" required>
+                            <label for="first_name" class="form-label">Prénom</label>
+                            <input type="text" name="first_name" id="Firstname" class="form-control" value="<?= htmlspecialchars($user["first_name"]) ?>" required>
                         </div>
                         <div class="mb-3">
-                            <label for="Label" class="form-label">Label</label>
-                            <input type="text" name="Label" id="Label" class="form-control" value="<?= htmlspecialchars($user["Label"]) ?>">
+                            <label for="label" class="form-label">Label</label>
+                            <input type="text" name="label" id="Label" class="form-control" value="<?= htmlspecialchars($user["label"]) ?>">
                         </div>
                         <div class="mb-3">
-                            <label for="Bio" class="form-label">Biographie</label>
-                            <textarea name="Bio" id="Bio" class="form-control" rows="4"><?= htmlspecialchars($user["Bio"]) ?></textarea>
+                            <label for="bio" class="form-label">Biographie</label>
+                            <textarea name="bio" id="Bio" class="form-control" rows="4"><?= htmlspecialchars($user["bio"]) ?></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="Photo" class="form-label">Photo</label>
-                            <input type="file" name="Photo" id="Photo" class="form-control" accept=".jpg,.jpeg,.png">
+                            <label for="photo" class="form-label">Photo</label>
+                            <input type="file" name="photo" id="Photo" class="form-control" accept=".jpg,.jpeg,.png">
                         </div>
                         <button type="submit" name="update" class="btn btn-success w-100">Mettre à jour</button>
                     </form>

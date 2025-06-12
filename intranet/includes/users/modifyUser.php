@@ -3,7 +3,7 @@
 session_start();
 
 if (!isset($_SESSION["action"])) {
-    header(header:"Location:".$_SERVER["HTTP_REFERER"]);
+    header(header:"Location:../../dirs/users.php");
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {

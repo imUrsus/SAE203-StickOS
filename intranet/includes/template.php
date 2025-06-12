@@ -6,8 +6,7 @@ function settings($title) {
 
 function head() {
     $user = $_SESSION ?? [];
-
-    $role = $_SESSION['Role'] ?? 'perso';
+    $role = $_SESSION['role'] ?? 'perso';
     $firstName = htmlspecialchars($user['Firstname'] ?? 'Utilisateur');
 ?>
 <!DOCTYPE html>
@@ -34,39 +33,36 @@ function head() {
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">Utilisateurs</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../dirs/users.php">Gestion des utilisateurs</a></li>
-                            <li><a class="dropdown-item" href="../includes/users/modifyUser.php">Modifier un utilisateur</a></li>
-                            <li><a class="dropdown-item" href="../includes/users/deleteUser.php">Supprimer un utilisateur</a></li>
-                            <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
+                            <li><a class="dropdown-item" href="../../../intranet/dirs/users.php">Gestion des utilisateurs</a></li>
+                            <li><a class="dropdown-item" href="../../../intranet/includes/users/modifyUser.php">Modifier un utilisateur</a></li>
+                            <li><a class="dropdown-item" href="../../../intranet/includes/users/deleteUser.php">Supprimer un utilisateur</a></li>
+                            <li class="nav-item"><a class="nav-link" href="../../../intranet/profile.php">Mon profil</a></li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="dirDropdown" role="button" data-bs-toggle="dropdown">Annuaire</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../dirs/clients.php">Clients</a></li>
-                            <li><a class="dropdown-item" href="../dirs/providers.php">Fournisseurs</a></li>
+                            <li><a class="dropdown-item" href="../../../intranet/dirs/clients.php">Clients</a></li>
+                            <li><a class="dropdown-item" href="../../../intranet/dirs/providers.php">Fournisseurs</a></li>
                         </ul>
                     </li>
 
-                    <li class="nav-item"><a class="nav-link" href="wiki.php">Wiki</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/wiki.html">Wiki</a></li>
 
-                <?php elseif ($role === 'managers'): ?>
-                    <li class="nav-item"><a class="nav-link" href="../dirs/clients.php">Clients</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../dirs/providers.php">Fournisseurs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
+                <?php elseif ($role === 'manager'): ?>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/dirs/clients.php">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/dirs/providers.php">Fournisseurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/profile.php">Mon profil</a></li>
 
                 <?php elseif ($role === 'direction'): ?>
-                    <li class="nav-item"><a class="nav-link" href="../dirs/clients.php">Clients</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../dirs/providers.php">Fournisseurs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
-
-
-                <?php elseif ($role === 'salariés'): ?>
-                     <li class="nav-item"><a class="nav-link" href="../profile.php">Mon profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/dirs/clients.php">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/dirs/providers.php">Fournisseurs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../intranet/profile.php">Mon profil</a></li>
 
                 <?php else: ?>
                     <!-- perso -->
                 <?php endif; ?>
+		    <li class="nav-item"><a class="nav-link" href="../../../intranet/drive.php">Drive</a></li>
             </ul>
             <div class="dropdown ms-auto">
                 <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">

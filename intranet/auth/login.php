@@ -21,7 +21,7 @@ foreach($utilisateur as $user){
             $_SESSION["password"] = $user["password"];
             $_SESSION["email"] = $user["email"];
             $_SESSION["lastname"] = $user["last_name"];
-            $_SESSION["firstname"] = $user["email"];
+            $_SESSION["firstname"] = $user["first_name"];
             $_SESSION["role"] = $user["role"];
             $_SESSION["photo"] = $user["Photo"];
             $_SESSION["bio"] = $user["bio"];

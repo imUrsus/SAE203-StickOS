@@ -7,7 +7,7 @@ if (isset($_SESSION['user'])) {
 }
 
 else {
-    header("Location:auth/login.php");
+    header("Location: auth/login.php");
     exit();
 }
 

@@ -5,13 +5,13 @@
 require_once '../includes/template.php';
 settings("Partner");
 head();
-session_start();
+
 ?>
 
 <body>
 
         <tbody>
-            <?php
+<?php
             $jsonFile = '../data/providers.json';
             $jsonData = file_get_contents($jsonFile);
             $utilisateurs = json_decode($jsonData, true);
@@ -37,7 +37,7 @@ session_start();
                         $utilisateurs[$index]['Description'] = $description;
     
                         if (isset($_FILES['Logo']) && $_FILES['Logo']['error'] === UPLOAD_ERR_OK) {
-                            $uploadDir = '../assets/Providers/';
+                            $uploadDir = '../assets/img/providers/';
                             $uploadFile = $uploadDir . basename($_FILES['Logo']['name']);
     
                             if (move_uploaded_file($_FILES['Logo']['tmp_name'], $uploadFile)) {

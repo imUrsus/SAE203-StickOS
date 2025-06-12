@@ -1,8 +1,12 @@
 <?php
-require_once __DIR__ . '../../includes/clients/functions.php';
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once '../includes/clients/functions.php';
 $clients = getAllClients();
 
 include_once "../includes/template.php";
+settings("Annuaire clients");
 head();
 ?>
 <div class="container mt-5">
@@ -15,9 +19,9 @@ head();
             <tr>
                 <th>ID</th>
                 <th>Nom</th>
-                <th>Prénom</th>
+                <th>Prenom</th>
                 <th>Email</th>
-                <th>Téléphone</th>
+                <th>Telephone</th>
                 <th>Adresse</th>
                 <th>Supprimer/Modifier</th>
             </tr>
